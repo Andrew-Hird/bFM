@@ -44,11 +44,6 @@ export default class bFMPlayer extends Component {
         source={require('./img/bfm_full.png')}
       />
       </TouchableHighlight>
-      <TouchableHighlight onPress={() => { ReactNativeAudioStreaming.stop()}}>
-      <Text style={styles.welcome}>
-        Click here to stop
-      </Text>
-      </TouchableHighlight>
       </View>
     );
   }
