@@ -3,6 +3,7 @@ import {
   AppRegistry,
   Image,
   StyleSheet,
+  Switch,
   Text,
   TouchableHighlight,
   View
@@ -17,10 +18,27 @@ ReactNativeAudioStreaming.play(url, {showIniOSMediaCenter: true, showInAndroidNo
 ReactNativeAudioStreaming.stop()
 
 export default class bFMPlayer extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      status: false
+    }
+  }
+
+  _onPress () {
+    let newState = !(this.state.status)
+    this.setState({status: newState})
+    if (this.state.status) {
+      ReactNativeAudioStreaming.stop()
+    } else {
+      ReactNativeAudioStreaming.play(url, {showIniOSMediaCenter: true, showInAndroidNotifications: true})
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
-      <TouchableHighlight onPress={() => { ReactNativeAudioStreaming.play(url, {showIniOSMediaCenter: true, showInAndroidNotifications: true})}}>
+      <TouchableHighlight onPress={() => { this._onPress() }}>
       <Image
         style={styles.button}
         source={require('./img/bfm_full.png')}
@@ -31,7 +49,6 @@ export default class bFMPlayer extends Component {
         Click here to stop
       </Text>
       </TouchableHighlight>
-        {/* <Player url={url} /> */}
       </View>
     );
   }
