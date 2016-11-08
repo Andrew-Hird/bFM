@@ -5,6 +5,7 @@ import {
   StyleSheet,
   Switch,
   Text,
+  TouchableOpacity,
   TouchableHighlight,
   View
 } from 'react-native'
@@ -38,12 +39,12 @@ export default class bFMPlayer extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <TouchableHighlight onPress={() => { this._onPress() }}>
+      <TouchableOpacity onPress={() => { this._onPress() }}>
       <Image
-        style={styles.button}
-        source={require('./img/bfm_full.png')}
+        style={{height: 450, width: 300}}
+        source={require('./img/bfmfull.png')}
       />
-      </TouchableHighlight>
+      </TouchableOpacity>
       </View>
     );
   }
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'red',
   },
   welcome: {
     fontSize: 20,
