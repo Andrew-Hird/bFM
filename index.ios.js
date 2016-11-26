@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'red',
+    backgroundColor: '#e70d27',
   },
   welcome: {
     fontSize: 20,
@@ -79,9 +79,10 @@ const styles = StyleSheet.create({
   nav: {
     margin: 20,
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#151313',
     width: 300,
     justifyContent: 'center',
+    borderRadius: 20
   },
   navText: {
     color: 'white',
