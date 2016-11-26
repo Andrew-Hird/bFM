@@ -19,7 +19,7 @@ ReactNativeAudioStreaming.resume()
 ReactNativeAudioStreaming.play(url, {showIniOSMediaCenter: true, showInAndroidNotifications: true})
 ReactNativeAudioStreaming.stop()
 
-export default class bFMPlayer extends Component {
+export default class BFM extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -40,17 +40,12 @@ export default class bFMPlayer extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <View style={styles.nav}>
-        <Text style={styles.navText}>bCasts</Text>
-      </View>
-        <View style={styles.home}>
-          <TouchableOpacity onPress={() => { this._onPress() }}>
-          <Image
-            style={{height: 450, width: 300}}
-            source={require('./img/bfmfull.png')}
-          />
-          </TouchableOpacity>
-          </View>
+        <TouchableOpacity onPress={() => { this._onPress() }}>
+        <Image
+          style={{height: 450, width: 300}}
+          source={require('../img/bfmfull.png')}
+        />
+        </TouchableOpacity>
       </View>
     );
   }
@@ -73,22 +68,4 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-  home: {
-    flex: 9
-  },
-  nav: {
-    margin: 20,
-    flex: 1,
-    backgroundColor: 'black',
-    width: 300,
-    justifyContent: 'center',
-  },
-  navText: {
-    color: 'white',
-    textAlign: 'center',
-    fontSize: 20,
-  }
 });
-
-
-AppRegistry.registerComponent('bFMPlayer', () => bFMPlayer);
