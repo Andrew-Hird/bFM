@@ -95,13 +95,13 @@ export class Bcasts extends Component {
     return (
       <View style={{ flex: 1, backgroundColor: '#e70d27' }}>
 
-      <TouchableHighlight style={ styles.nav } onPress={ () => this._navigate() }>
-        <Text style={ styles.navText }>back</Text>
+      <TouchableHighlight style={ styles.back } onPress={ () => this._navigate() }>
+        <Text style={ styles.navText }> back </Text>
       </TouchableHighlight>
 
         <WebView
           source={{uri: 'http://95bfm.com/bcasts'}}
-          style={{marginTop: 20, flex: 9}}
+          style={{marginTop: 5, flex: 9}}
         />
       </View>
     )
@@ -131,9 +131,19 @@ const styles = StyleSheet.create({
   nav: {
     marginTop: 20,
     // flex: 1,
-    height: 75,
+    height: 55,
     backgroundColor: '#151313',
     width: 300,
+    justifyContent: 'center',
+    borderRadius: 20
+  },
+  back: {
+    marginTop: 20,
+    marginLeft: 5,
+    // flex: 1,
+    height: 55,
+    backgroundColor: '#151313',
+    width: 100,
     justifyContent: 'center',
     borderRadius: 20
   },
