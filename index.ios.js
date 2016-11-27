@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   AppRegistry,
   Image,
@@ -13,6 +13,8 @@ import {
 } from 'react-native'
 
 import { ReactNativeAudioStreaming, Player } from 'react-native-audio-streaming'
+
+import Spinner from 'react-native-loading-spinner-overlay'
 
 const url = "http://streams.95bfm.com/stream95"
 ReactNativeAudioStreaming.pause()
@@ -44,7 +46,7 @@ export default class bFMPlayer extends Component {
 
 export class Main extends Component {
   constructor(props){
-    super(props);
+    super(props)
     this.state = {
       status: false
     }
@@ -67,6 +69,7 @@ export class Main extends Component {
     return (
 
       	<View style={ styles.container }>
+
    				<TouchableHighlight style={ styles.nav } onPress={ () => this._navigateBcasts() }>
         		<Text style={ styles.navText }>bCasts</Text>
         	</TouchableHighlight>
@@ -74,10 +77,12 @@ export class Main extends Component {
           <View style={styles.container}>
             <TouchableOpacity onPress={() => { this._onPress() }}>
             <Image
-              style={{height: 450, width: 300}}
+              style={{height: 400, width: 270}}
               source={require('./img/bfmfull.png')}
             />
             </TouchableOpacity>
+            { this.state.status ? <Results /> : null }
+
           </View>
 
         </View>
@@ -85,7 +90,33 @@ export class Main extends Component {
   }
 }
 
+export class Results extends Component {
+  render() {
+    return (
+      <Image
+        style={{height: 50, width: 50, marginTop: 5}}
+        source={require('./img/stop.png')}
+      />
+    )
+  }
+}
+
 export class Bcasts extends Component {
+
+  constructor(props) {
+    super()
+    this.state = {
+      visible: true
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        visible: !this.state.visible
+      })
+    }, 3000)
+  }
 
   _navigate() {
   	this.props.navigator.push({ name: 'tipped' })
@@ -94,6 +125,8 @@ export class Bcasts extends Component {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: '#e70d27' }}>
+
+      <Spinner visible={this.state.visible} />
 
       <TouchableHighlight style={ styles.back } onPress={ () => this._navigate() }>
         <Text style={ styles.navText }> back </Text>
@@ -107,6 +140,8 @@ export class Bcasts extends Component {
     )
   }
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -152,7 +187,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
   }
-});
+})
 
 
-AppRegistry.registerComponent('bFMPlayer', () => bFMPlayer);
+AppRegistry.registerComponent('bFMPlayer', () => bFMPlayer)
